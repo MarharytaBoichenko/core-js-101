@@ -234,11 +234,7 @@ function toArrayOfSquares(arr) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
  */
 function getMovingSum(arr) {
-  return arr.map((el, index) => [...arr.slice(0, index + 1)].reduce((acc, currEl) => {
-    console.log('acc', acc);
-    console.log('currEl', currEl);
-    return acc + currEl;
-  }));
+  return arr.map((el, index) => [...arr.slice(0, index + 1)].reduce((acc, currEl) => acc + currEl));
 }
 
 /**
@@ -273,12 +269,8 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-  return arr.map((el, index) => {
-    console.log(el);
-    return Array(index + 1).fill(el);
-  }).flat();
+  return arr.map((el, index) => Array(index + 1).fill(el)).flat();
 }
-
 /**
  * Returns the 3 largest numbers from the specified array
  *
@@ -330,11 +322,7 @@ getPositivesCount([1, '2']);
  */
 function sortDigitNamesByNumericOrder(arr) {
   const numberText = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-  return arr.sort((a, b) => {
-    console.log(numberText.indexOf(a));
-    console.log(numberText.indexOf(b));
-    return numberText.indexOf(a) - numberText.indexOf(b);
-  });
+  return arr.sort((a, b) => numberText.indexOf(a) - numberText.indexOf(b));
 }
 
 /**
@@ -515,11 +503,7 @@ getIntervalArray(-2, 2);
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
 function distinct(arr) {
-  return arr.filter((el, index, array) => {
-    console.log(el);
-    console.log(index);
-    return array.indexOf(el) === index;
-  });
+  return arr.filter((el, index, array) => array.indexOf(el) === index);
 }
 
 /**
@@ -614,15 +598,10 @@ function swapHeadAndTail(arr) {
   const centerInd = Math.round((arr.length - 1) / 2);
   let centerEl;
   let newArr;
-  console.log(centerInd);
   if (arr.length % 2 !== 0) {
     centerEl = arr[centerInd];
   } else { centerEl = null; }
-  console.log(centerEl);
   if (centerEl !== null) {
-    console.log('here');
-    console.log('1', [...arr.slice(centerInd + 1, arr.length)]);
-    console.log('2', [...arr.slice(0, centerInd)]);
     newArr = [...arr.slice(centerInd + 1, arr.length), centerEl, ...arr.slice(0, centerInd)];
   } else { newArr = [...arr.slice(centerInd, arr.length), ...arr.slice(0, centerInd)]; }
 
